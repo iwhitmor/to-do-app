@@ -11,6 +11,14 @@ function App() {
           <li><Link to="/about">About</Link></li>
         </ul>
       </nav>
+      <Switch>
+        <Route path="/" exact>
+          <Home message="To-Do App" />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+      </Switch>
     </div>
   );
 }
