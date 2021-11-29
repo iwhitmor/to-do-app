@@ -19,7 +19,7 @@ function Main() {
       <Navbar.Brand id="navBarFooterTitle">To Do App</Navbar.Brand>
     </Navbar>
     <ToDoForm />
-    <ToDoList />
+    <ToDoList data={data} />
     </div>
   )
 }
