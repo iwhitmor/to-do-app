@@ -18,6 +18,9 @@ function App() {
         <Route path="/about">
           <About />
         </Route>
+        <Route>
+          <h1>Not Found</h1>
+        </Route>
       </Switch>
     </div>
   );
