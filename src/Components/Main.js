@@ -2,7 +2,7 @@ import React from "react";
 
 function Home() {
   return (
-    <h1>Created a Function Component for Home</h1>
+    <h1>To Do List Manager</h1>
   )
 }
 
