@@ -8,10 +8,10 @@ import { Nav, Navbar, Container } from 'react-bootstrap';
 function App() {
   return (
     <div className="App">
-      <Navbar expand="lg" bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand>To Do List Manager</Navbar.Brand>
-        <Nav>
+        <Nav className="me-auto">
           <Nav.Link as={Link} to="/">Home</Nav.Link>
           <Nav.Link as={Link} to="/about">About</Nav.Link>
         </Nav>
