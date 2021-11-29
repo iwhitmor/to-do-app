@@ -4,6 +4,9 @@ import Footer from './Components/Footer';
 import { Switch, Route } from 'react-router-dom';
 import Home from './Components/Main';
 import About from './Components/About';
+import { FLIPPED_ALIAS_KEYS } from '@babel/types';
+
+
 
 function App() {
   return (

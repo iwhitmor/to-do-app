@@ -1,7 +1,16 @@
 import React from 'react';
 import ToDoForm from './Todo/ToDoForm';
+import ToDoList from './Todo/ToDoList';
 import { Navbar } from 'react-bootstrap';
 import './main.css';
+
+const data = [
+  { title: "Do the dishes, clean kitchen", difficulty: 5, assignedTo: "Ian", completed: true},
+  { title: "Vaccuum and sweep all floors", difficulty: 3, assignedTo: "Sarah", completed: false},
+  { title: "Walk the dogs and pick up poop in yard", difficulty: 10, assignedTo: "Sarah", completed: false},
+  { title: "Wash and dry clothes. Make sure to fold them afterwards", difficulty: 7, assignedTo: "Ian", completed: true},
+  { title: "Clean up all kids toys", difficulty: 1, assignedTo: "Wesley", completed: false}
+]
 
 function Main() {
   return (
@@ -10,6 +19,7 @@ function Main() {
       <Navbar.Brand id="navBarFooterTitle">To Do App</Navbar.Brand>
     </Navbar>
     <ToDoForm />
+    <ToDoList />
     </div>
   )
 }
