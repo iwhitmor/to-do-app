@@ -31,6 +31,15 @@ function Main() {
     setTasks(newTasks);
   }
 
+  function handleDelete(task){
+    
+    const updatedTaskList = tasks.filter(t => 
+      t !== task) 
+      
+    setTasks(updatedTaskList)
+    
+  }
+
   return (
     <div className="main">
       <Navbar className="mt-4 px-2" bg="dark" variant="dark" expand="lg">
@@ -42,7 +51,7 @@ function Main() {
             <ToDoForm onSave={handleSave} />
           </Col>
           <Col xs={7}>
-            <ToDoList data={tasks} />
+            <ToDoList data={tasks} onDelete={handleDelete} />
           </Col>
         </Row>
       </Container>

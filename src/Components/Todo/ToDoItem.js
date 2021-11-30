@@ -3,10 +3,14 @@ import { Toast, Badge } from 'react-bootstrap';
 
 function ToDoItem(props) {
 
-  const { task } = props;
+  const { task, onDelete } = props;
+
+  function removeTask() {
+    onDelete(task);
+  }
 
   return (
-    <Toast className="mt-4" style={{ width: '32rem' }} key={task.title}>
+    <Toast onClose={removeTask} className="mt-4" style={{ width: '32rem' }} key={task.title}>
       <Toast.Header>
         {task.completed ? <Badge pill bg="success">Complete</Badge> : <Badge pill bg="danger">Pending</Badge>}
         <span className="d-inline-block ms-2 me-auto">{task.assignedTo}</span>
