@@ -9,7 +9,7 @@ import { FLIPPED_ALIAS_KEYS } from '@babel/types';
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <Switch>
         <Route path="/" exact>
           <Home message="To-Do App" />
@@ -21,7 +21,7 @@ function App() {
           <h1>Not Found</h1>
         </Route>
       </Switch>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
