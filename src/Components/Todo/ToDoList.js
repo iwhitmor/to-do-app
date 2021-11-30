@@ -5,12 +5,12 @@ import ToDoItem from './ToDoItem';
 
 function ToDoList(props) {
 
-  const { data, onDelete } = props;
+  const { data, onDelete, onUpdate } = props;
 
   return (
     <>
       {data.map(task => (
-        <ToDoItem task={task} onDelete={onDelete} />
+        <ToDoItem task={task} onDelete={onDelete} onUpdate={onUpdate} />
       ))}
     </>
   )

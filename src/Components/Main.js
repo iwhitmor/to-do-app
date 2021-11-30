@@ -31,13 +31,19 @@ function Main() {
     setTasks(newTasks);
   }
 
-  function handleDelete(task){
-    
-    const updatedTaskList = tasks.filter(t => 
-      t !== task) 
-      
+  function handleDelete(task) {
+
+    const updatedTaskList = tasks.filter(t =>
+      t !== task)
+
     setTasks(updatedTaskList)
-    
+  }
+
+  function taskStatus(task) {
+    const updatedTaskStatus = tasks.filter(t => 
+      t == task)
+
+      setTasks(updatedTaskStatus)
   }
 
   return (
@@ -51,7 +57,7 @@ function Main() {
             <ToDoForm onSave={handleSave} />
           </Col>
           <Col xs={7}>
-            <ToDoList data={tasks} onDelete={handleDelete} />
+            <ToDoList data={tasks} onDelete={handleDelete} onUpdate={taskStatus} />
           </Col>
         </Row>
       </Container>
