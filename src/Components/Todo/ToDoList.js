@@ -9,7 +9,7 @@ function ToDoList(props){
   return (
   <>
    {data.map(task => (
-     <Card className="mb-3" style={{ width: '32rem' }} key={task.title}>
+     <Card className="mt-4" style={{ width: '32rem' }} key={task.title}>
        <Card.Header>
          {task.completed ? <Badge pill bg="success">Complete</Badge> : <Badge pill bg="danger">Pending</Badge>} 
          {task.assignedTo}
