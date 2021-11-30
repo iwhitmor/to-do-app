@@ -1,7 +1,6 @@
 import { prependOnceListener } from 'process';
 import React from 'react';
-
-
+import { Badge, Card } from 'react-bootstrap';
 
 function ToDoList(props){
   
@@ -10,7 +9,8 @@ function ToDoList(props){
   return (
   <>
    {data.map(task => (
-     <li key={task.title}>{task.completed ? <p>True</p> : <p>False</p>}, {task.assignedTo}, {task.title}, {task.difficulty}  </li>
+     <Card style={{ width: '20rem' }} key={task.title}>
+       {task.completed ? <Badge pill bg="success">Complete</Badge> : <Badge pill bg="danger">Pending</Badge>} {task.assignedTo} {task.title} {task.difficulty}  </Card>
    ))}
   </>  
   )
