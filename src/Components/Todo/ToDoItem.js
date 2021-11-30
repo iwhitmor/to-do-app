@@ -1,5 +1,6 @@
 import React from 'react';
 import { Toast, Badge } from 'react-bootstrap';
+import './toDoItem.css';
 
 function ToDoItem(props) {
 
@@ -16,7 +17,7 @@ function ToDoItem(props) {
   return (
     <Toast onClose={removeTask} className="mt-4" style={{ width: '32rem' }} key={task.title}>
       <Toast.Header>
-        {task.completed ? <Badge onClick={updateTask} onUpdate={updateTask} pill bg="success">Complete</Badge> : <Badge onClick={updateTask} pill bg="danger">Pending</Badge>}
+        {task.completed ? <Badge className="updateTaskClick" onClick={updateTask} onUpdate={updateTask} pill bg="success">Complete</Badge> : <Badge className="updateTaskClick" onClick={updateTask} pill bg="danger">Pending</Badge>}
         <span className="d-inline-block ms-2 me-auto">{task.assignedTo}</span>
       </Toast.Header>
       <Toast.Body>
