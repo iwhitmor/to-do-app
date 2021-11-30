@@ -40,10 +40,20 @@ function Main() {
   }
 
   function taskStatus(task) {
-    const updatedTaskStatus = tasks.filter(t => 
-      t == task)
+    const updatedTaskStatus = tasks.map(t => {
 
-      setTasks(updatedTaskStatus)
+      if (t === task) {
+        return {
+          ...t,
+          completed: !t.completed
+        }
+      }
+
+      return t;
+
+    })
+
+    setTasks(updatedTaskStatus)
   }
 
   return (
