@@ -4,7 +4,7 @@ import { Form, Card, Button } from 'react-bootstrap';
 function ToDoForm(props) {
 
   function handleSubmit(event) {
-    event.preventDefautlt();
+    event.preventDefault();
 
     const form = event.target;
     const { title, assignedTo, difficulty } = form.elements;
@@ -18,7 +18,7 @@ function ToDoForm(props) {
     console.log(formData);
 
     event.target.reset();
-    event.targe.elements.title.focus();
+    event.target.elements.title.focus();
   }
 
   return (
@@ -39,7 +39,7 @@ function ToDoForm(props) {
               <Form.Label>Difficulty</Form.Label>
               <Form.Range name="difficulty" min="1" max="10" />
             </Form.Group>
-            <Button className="mb-4" variant="secondary" size="sm">Add Item</Button>
+            <Button type="submit" className="mb-4" variant="secondary" size="sm">Add Item</Button>
           </Form>
         </Card.Body>
       </Card>

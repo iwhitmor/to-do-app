@@ -25,7 +25,7 @@ function Main() {
       </Navbar>
       <Container>
         <Row>
-          <Col sm={6} md={5} lg={4}>
+          <Col sm={5} md={6} lg={6}>
             <ToDoForm />
           </Col>
           <Col sm={6} md={7} lg={8}>
