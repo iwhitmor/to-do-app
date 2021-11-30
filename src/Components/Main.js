@@ -39,10 +39,10 @@ function Main() {
       </Navbar>
       <Container>
         <Row>
-          <Col sm={5} md={6} lg={6}>
+          <Col xs={5}>
             <ToDoForm onSave={handleSave} />
           </Col>
-          <Col sm={6} md={7} lg={8}>
+          <Col xs={7}>
             <ToDoList data={tasks} />
           </Col>
         </Row>
