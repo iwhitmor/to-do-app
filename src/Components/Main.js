@@ -29,7 +29,6 @@ function Main() {
     ];
 
     setTasks(newTasks);
-
   }
 
   return (
