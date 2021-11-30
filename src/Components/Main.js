@@ -12,11 +12,25 @@ const data = [
   { title: "Walk the dogs and pick up poop in yard", difficulty: 10, assignedTo: "Sarah", completed: false },
   { title: "Wash and dry clothes. Make sure to fold them afterwards", difficulty: 7, assignedTo: "Ian", completed: true },
   { title: "Clean up all kids toys", difficulty: 1, assignedTo: "Wesley", completed: false }
-]
+];
 
 function Main() {
 
-  const [tasks, setTasks] = useState(data)
+  const [tasks, setTasks] = useState(data);
+
+  function handleSave(formData) {
+    const newTask = {
+      ...formData,
+    };
+
+    const newTasks = [
+      ...tasks,
+      newTask,
+    ];
+
+    setTasks(newTasks);
+
+  }
 
   return (
     <div className="main">
@@ -26,7 +40,7 @@ function Main() {
       <Container>
         <Row>
           <Col sm={5} md={6} lg={6}>
-            <ToDoForm />
+            <ToDoForm onSave={handleSave} />
           </Col>
           <Col sm={6} md={7} lg={8}>
             <ToDoList data={tasks} />

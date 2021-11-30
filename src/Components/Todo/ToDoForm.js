@@ -3,6 +3,8 @@ import { Form, Card, Button } from 'react-bootstrap';
 
 function ToDoForm(props) {
 
+  const { onSave } = props;
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -10,12 +12,12 @@ function ToDoForm(props) {
     const { title, assignedTo, difficulty } = form.elements;
 
     const formData = {
-      title,
-      assignedTo,
-      difficulty,
+      title: title.value,
+      assignedTo: assignedTo.value,
+      difficulty: difficulty.value,
     };
 
-    console.log(formData);
+    onSave(formData);
 
     event.target.reset();
     event.target.elements.title.focus();
