@@ -1,6 +1,6 @@
 import { prependOnceListener } from 'process';
 import React from 'react';
-import { Badge, Card, ListGroup } from 'react-bootstrap';
+import { Badge, Card, ListGroup, CloseButton } from 'react-bootstrap';
 
 function ToDoList(props){
   
@@ -13,6 +13,7 @@ function ToDoList(props){
        <Card.Header>
          {task.completed ? <Badge pill bg="success">Complete</Badge> : <Badge pill bg="danger">Pending</Badge>} 
          {task.assignedTo}
+         <CloseButton />
        </Card.Header> 
        <Card.Body>
        <Card.Title>
