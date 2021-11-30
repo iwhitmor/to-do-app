@@ -17,7 +17,7 @@ function Main() {
   return (
     <div className="main">
       <Navbar className="mt-4" bg="dark" variant="dark" expand="lg">
-      <Navbar.Brand id="navBarFooterTitle">To Do App</Navbar.Brand>
+      <Navbar.Brand id="navBarFooterTitle">To Do List Manager</Navbar.Brand>
     </Navbar>
     <Container>
       <Row>
