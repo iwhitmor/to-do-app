@@ -1,5 +1,6 @@
 import React from 'react';
-import { Badge, Card, CloseButton } from 'react-bootstrap';
+import { Badge, Toast } from 'react-bootstrap';
+import './ToDoList.css';
 
 function ToDoList(props) {
 
@@ -8,21 +9,20 @@ function ToDoList(props) {
   return (
     <>
       {data.map(task => (
-        <Card className="mt-4" style={{ width: '32rem' }} key={task.title}>
-          <Card.Header>
+        <Toast className="mt-4" style={{ width: '32rem' }} key={task.title}>
+          <Toast.Header>
             {task.completed ? <Badge pill bg="success">Complete</Badge> : <Badge pill bg="danger">Pending</Badge>}
-            {task.assignedTo}
-            <CloseButton />
-          </Card.Header>
-          <Card.Body>
-            <Card.Title>
+            <span className="d-inline-block ms-2 me-auto">{task.assignedTo}</span>
+          </Toast.Header>
+          <Toast.Body>
+            <p className="todo-title">
               {task.title}
-            </Card.Title>
-            <Card.Text>
+            </p>
+            <p className="todo-difficulty">
               Difficulty: {task.difficulty}
-            </Card.Text>
-          </Card.Body>
-        </Card>
+            </p>
+          </Toast.Body>
+        </Toast>
       ))}
     </>
   )
