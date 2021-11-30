@@ -16,15 +16,15 @@ const data = [
 function Main() {
   return (
     <div className="main">
-      <Navbar className="mt-4" bg="dark" variant="dark" expand="lg">
+      <Navbar className="mt-4 px-2" bg="dark" variant="dark" expand="lg">
         <Navbar.Brand id="navBarFooterTitle">To Do List Manager</Navbar.Brand>
       </Navbar>
       <Container>
         <Row>
-          <Col>
+          <Col sm={6} md={5} lg={4}>
             <ToDoForm />
           </Col>
-          <Col>
+          <Col sm={6} md={7} lg={8}>
             <ToDoList data={data} />
           </Col>
         </Row>
