@@ -13,7 +13,6 @@ function ToDoList(props){
      <li key={task.title}>{task.completed ? <p>True</p> : <p>False</p>}, {task.assignedTo}, {task.title}, {task.difficulty}  </li>
    ))}
   </>  
-    
   )
 }
 

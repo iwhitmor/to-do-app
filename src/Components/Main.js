@@ -2,6 +2,7 @@ import React from 'react';
 import ToDoForm from './Todo/ToDoForm';
 import ToDoList from './Todo/ToDoList';
 import { Navbar } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import './main.css';
 
 const data = [
@@ -18,8 +19,16 @@ function Main() {
       <Navbar className="mt-4" bg="dark" variant="dark" expand="lg">
       <Navbar.Brand id="navBarFooterTitle">To Do App</Navbar.Brand>
     </Navbar>
+    <Container>
+      <Row>
+      <Col>
     <ToDoForm />
+    </Col>
+    <Col>
     <ToDoList data={data} />
+    </Col>
+    </Row>
+    </Container>
     </div>
   )
 }
