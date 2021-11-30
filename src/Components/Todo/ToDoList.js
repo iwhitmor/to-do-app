@@ -1,5 +1,4 @@
 import React from 'react';
-import { Badge, Toast } from 'react-bootstrap';
 import './ToDoList.css';
 import ToDoItem from './ToDoItem';
 
