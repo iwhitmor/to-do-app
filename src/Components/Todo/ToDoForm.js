@@ -31,7 +31,7 @@ function ToDoForm(props) {
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-4">
               <Form.Label>To Do Item</Form.Label>
-              <Form.Control type="text" name="title" placeholder="Details" />
+              <Form.Control as="textarea" rows={2} name="title" placeholder="Details" />
             </Form.Group>
             <Form.Group className="mb-4">
               <Form.Label>Assigned To</Form.Label>
