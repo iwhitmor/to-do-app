@@ -3,6 +3,7 @@ import ToDoForm from './Todo/ToDoForm';
 import ToDoList from './Todo/ToDoList';
 import { Navbar } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useState } from 'react';
 import './main.css';
 
 const data = [
@@ -14,6 +15,9 @@ const data = [
 ]
 
 function Main() {
+
+  const [tasks, setTasks] = useState(data)
+
   return (
     <div className="main">
       <Navbar className="mt-4" bg="dark" variant="dark" expand="lg">
@@ -25,7 +29,7 @@ function Main() {
             <ToDoForm />
           </Col>
           <Col>
-            <ToDoList data={data} />
+            <ToDoList data={tasks} />
           </Col>
         </Row>
       </Container>
