@@ -15,7 +15,7 @@ function ToDoItem(props) {
   }
 
   return (
-    <Toast onClose={handleDelete} className="mt-4" style={{ width: '32rem' }} key={task.title}>
+    <Toast onClose={handleDelete} className="mt-4" style={{ width: '32rem' }}>
       <Toast.Header>
         {task.completed ?
           <Badge className="updateTaskClick1" onClick={updateTask} pill bg="success">Complete

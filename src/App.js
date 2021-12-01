@@ -4,7 +4,6 @@ import Footer from './Components/Footer';
 import { Switch, Route } from 'react-router-dom';
 import Home from './Components/Main';
 import About from './Components/About';
-import Login from './Components/Auth/Login';
 
 function App() {
   return (
