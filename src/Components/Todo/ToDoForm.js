@@ -1,8 +1,10 @@
 import React from 'react';
 import { Form, Card, Button } from 'react-bootstrap';
+import useAuth from '../Hooks/useAuth';
 
 function ToDoForm(props) {
 
+  const { user } = useAuth();
   const { onSave } = props;
 
   function handleSubmit(event) {
@@ -41,7 +43,7 @@ function ToDoForm(props) {
               <Form.Label>Difficulty</Form.Label>
               <Form.Range name="difficulty" min="1" max="10" />
             </Form.Group>
-            <Button type="submit" className="mb-4" variant="secondary" size="sm">Add Item</Button>
+            <Button type="submit" disabled={!user} className="mb-4" variant="secondary" size="sm">Add Item</Button>
           </Form>
         </Card.Body>
       </Card>
