@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useState } from 'react'
 
 const usersAPI = 'https://deltav-todo.azurewebsites.net/api/v1/Users';
 
@@ -11,8 +11,10 @@ export default function useAuth() {
 }
 
 export function AuthProvider(props) {
+  const [user, setUser] = useState(null);
+
   const state = {
-    user: null,
+    user,
 
     login,
   };
@@ -24,11 +26,15 @@ export function AuthProvider(props) {
       headers: {
         'Content-Type': 'application/json',
       },
-       body: JSON.stringify(loginData),
+      body: JSON.stringify(loginData),
     });
 
     const resultBody = await result.json();
     console.log(resultBody)
+
+    if (result.ok) {
+      setUser(resultBody);
+    }
   }
 
   return (
