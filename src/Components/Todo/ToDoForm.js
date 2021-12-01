@@ -19,8 +19,8 @@ function ToDoForm(props) {
 
     onSave(formData);
 
-    event.target.reset();
-    event.target.elements.title.focus();
+    form.reset();
+    title.focus();
   }
 
   return (
