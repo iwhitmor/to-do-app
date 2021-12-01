@@ -1,8 +1,12 @@
 import React from 'react';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from './Hooks/useAuth';
 
 function Header() {
+
+  const { user } = useAuth();
+
   return (
     <>
       <Navbar bg="dark" variant="dark">
