@@ -10,13 +10,13 @@ function Header() {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar className="headerNavBar" bg="primary" variant="dark">
         <Container>
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/about">About</Nav.Link>
+          <Nav.Link classname="textLink" as={Link} to="/">Home</Nav.Link>
+          <Nav.Link classname="textLink" as={Link} to="/about">About</Nav.Link>
+          <Navbar.Collapse className="justify-content-end">
             <Login />
-          </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
