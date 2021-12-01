@@ -1,6 +1,10 @@
-import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
+
+export default function Login() {
 
 function handleSubmit(event) {
+  event.preventDefault();
+
   const form = event.target;
   const { username, password } = form.elements;
 
@@ -11,7 +15,6 @@ function handleSubmit(event) {
   console.log(loginData);
 }
 
-export default function Login() {
   return (
     <Form className="loginForm" onSubmit={handleSubmit}>
       <Row>
@@ -19,7 +22,7 @@ export default function Login() {
           <Form.Control type="text" name="username" placeholder="Username" />
         </Col>
         <Col>
-          <Form.Control type="text" name="password" placeholder="Password" />
+          <Form.Control type="password" name="password" placeholder="Password" />
         </Col>
         <Col>
           <Button variant="dark" type="submit">Log In</Button>
