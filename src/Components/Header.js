@@ -12,8 +12,8 @@ function Header() {
     <>
       <Navbar className="headerNavBar" bg="primary" variant="dark">
         <Container>
-          <Nav.Link classname="textLink" as={Link} to="/">Home</Nav.Link>
-          <Nav.Link classname="textLink" as={Link} to="/about">About</Nav.Link>
+          <Nav.Link  as={Link} to="/">Home</Nav.Link>
+          <Nav.Link  as={Link} to="/about">About</Nav.Link>
           <Navbar.Collapse className="justify-content-end">
             <Login />
           </Navbar.Collapse>

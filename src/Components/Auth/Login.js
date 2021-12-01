@@ -1,19 +1,23 @@
 import { Form, Button, Row, Col } from "react-bootstrap";
+import useAuth from '../Hooks/useAuth';
 
 export default function Login() {
+  const { login } = useAuth();
 
-function handleSubmit(event) {
-  event.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
 
-  const form = event.target;
-  const { username, password } = form.elements;
+    const form = event.target;
+    const { username, password } = form.elements;
 
-  const loginData = {
-    username: username.value,
-    password: password.value,
-  };
-  console.log(loginData);
-}
+    const loginData = {
+      username: username.value,
+      password: password.value,
+    };
+    console.log(loginData);
+
+    login(loginData);
+  }
 
   return (
     <Form className="loginForm" onSubmit={handleSubmit}>
