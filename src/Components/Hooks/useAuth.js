@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useMemo, useState } from 'react'
 import jwt from 'jsonwebtoken';
 
 const usersAPI = 'https://deltav-todo.azurewebsites.net/api/v1/Users';
@@ -14,12 +14,13 @@ export default function useAuth() {
 export function AuthProvider(props) {
   const [user, setUser] = useState(null);
 
-  const auth = {
+  const auth = useMemo(() => ({
     user,
 
+    hasPermission,
     login,
     logout,
-  };
+  }), [user]);
 
   async function login(loginData) {
     console.log(loginData);
@@ -46,6 +47,16 @@ export function AuthProvider(props) {
     setUser(null);
   }
 
+  function hasPermission(permission) {
+    if (!user) return false;
+
+    if (!permission) return true;
+
+    if (!user.permissions) return false;
+
+    return user.permissions.includes(permission);
+  }
+
   return (
     <AuthContext.Provider value={auth}>
       {props.children}
@@ -53,8 +64,7 @@ export function AuthProvider(props) {
   )
 }
 
-function processUser(authResponse) {
-  let user = authResponse;
+function processUser(user) {
   if (!user) return null;
 
   try {
