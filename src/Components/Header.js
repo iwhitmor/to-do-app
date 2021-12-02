@@ -6,7 +6,7 @@ import Login from './Auth/Login'
 
 function Header() {
 
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   return (
     <>
@@ -20,7 +20,7 @@ function Header() {
               <>
                 <Navbar.Text>Welcome back, {user.username}</Navbar.Text>
                 <Navbar.Text>
-                  <Button variant="dark">Log Out</Button>
+                  <Button onClick={() => logout()} variant="dark">Log Out</Button>
                 </Navbar.Text>
               </>
             }
