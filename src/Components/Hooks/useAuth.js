@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react'
+import jwt from 'jsonwebtoken';
 
 const usersAPI = 'https://deltav-todo.azurewebsites.net/api/v1/Users';
 
@@ -31,10 +32,11 @@ export function AuthProvider(props) {
     });
 
     const resultBody = await result.json();
-    //console.log(resultBody)
+    console.log(resultBody)
 
     if (result.ok) {
-      setUser(resultBody);
+      let user = processUser(resultBody)
+      setUser(user);
     } else {
       console.warn('auth failed', resultBody);
     }
@@ -49,4 +51,22 @@ export function AuthProvider(props) {
       {props.children}
     </AuthContext.Provider>
   )
+}
+
+function processUser(authResponse) {
+  let user = authResponse;
+  if (!user) return null;
+
+  try {
+    const payload = jwt.decode(user.token);
+    if (payload) {
+      Object.assign(user, payload);
+      return user;
+    }
+  }
+  catch (e) {
+    console.warn(e);
+  }
+
+  return null;
 }
