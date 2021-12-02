@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import useFetch from '../Components/Hooks/useFetch';
 import Auth from './Auth';
 import './main.css';
+import useAuth from './Hooks/useAuth';
 
 // const data = [
 //   { title: "Do the dishes, clean kitchen", difficulty: 5, assignedTo: "Ian", completed: true },
@@ -19,6 +20,7 @@ const toDoApi = 'https://deltav-todo.azurewebsites.net/api/v1/Todos';
 function Main() {
 
   const { tasks, setTasks } = useFetch(toDoApi);
+  const { user } = useAuth();
 
   function handleSave(formData) {
     const newTask = {
@@ -27,16 +29,23 @@ function Main() {
 
     const newTasks = [
       ...tasks,
-      newTask,  
+      newTask,
     ];
 
     setTasks(newTasks);
   }
 
-  function handleDelete(task) {
+  async function handleDelete(task) {
 
     const updatedTaskList = tasks.filter(t =>
       t !== task)
+
+    await fetch(`${toDoApi}/${task.id}`, {
+      method: 'delete',
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
+    })
 
     setTasks(updatedTaskList)
   }
