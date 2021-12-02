@@ -12,15 +12,25 @@ function Header() {
     <>
       <Navbar bg="primary" variant="dark">
         <Container>
-          <Nav.Link style={{ color: "white" }} as={Link} to="/">Home</Nav.Link>
-          <Nav.Link style={{ color: "white" }} as={Link} to="/about">About</Nav.Link>
+          <Nav.Link style={{ color: "white" }} as={Link} to="/">
+            Home
+          </Nav.Link>
+          <Nav.Link style={{ color: "white" }} as={Link} to="/about">
+            About
+          </Nav.Link>
           <Navbar.Collapse className="justify-content-end">
-            {!user && <Login />}
+            {!user &&
+              <Login />
+            }
             {user &&
               <>
-                <Navbar.Text style={{ color: "white" }}>Welcome back, {user.username}</Navbar.Text>
+                <Navbar.Text style={{ color: "white" }}>
+                  Welcome back, {user.username}
+                </Navbar.Text>
                 <Navbar.Text>
-                  <Button onClick={() => logout()} variant="danger">Log Out</Button>
+                  <Button onClick={() => logout()} variant="danger">
+                    Log Out
+                  </Button>
                 </Navbar.Text>
               </>
             }
