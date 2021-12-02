@@ -53,7 +53,7 @@ function ToDoForm(props) {
               </Form.Label>
               <Form.Range name="difficulty" min="1" max="10" />
             </Form.Group>
-            <Button type="submit" disabled={!canCreate} className="mb-4" variant="secondary" size="sm">
+            <Button type="submit" disabled={!canCreate} className="mb-4" variant="secondary">
               Add Item
             </Button>
           </Form>

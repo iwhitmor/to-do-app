@@ -1,10 +1,12 @@
 import React from 'react';
 import { Toast, Badge } from 'react-bootstrap';
 import './toDoItem.css';
+import useAuth from '../Hooks/useAuth';
 
 function ToDoItem(props) {
 
   const { task, onDelete, onUpdate } = props;
+  const { hasPermission } = useAuth();
 
   function handleDelete() {
     onDelete(task);
@@ -14,9 +16,11 @@ function ToDoItem(props) {
     onUpdate(task);
   }
 
+  let canDelete = hasPermission('delete');
+
   return (
     <Toast onClose={handleDelete} className="mt-4" style={{ width: '32rem' }}>
-      <Toast.Header>
+      <Toast.Header closeButton={canDelete}>
         {task.completed ?
           <Badge className="updateTaskClick1" onClick={updateTask} pill bg="success">Complete
           </Badge> :
