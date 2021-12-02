@@ -9,7 +9,7 @@ function ToDoList(props) {
   return (
     <>
       {data.map(task => (
-        <ToDoItem task={task} onDelete={onDelete} onUpdate={onUpdate} />
+        <ToDoItem key={task.title} task={task} onDelete={onDelete} onUpdate={onUpdate} />
       ))}
     </>
   )

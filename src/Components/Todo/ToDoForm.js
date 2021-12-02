@@ -1,8 +1,10 @@
 import React from 'react';
 import { Form, Card, Button } from 'react-bootstrap';
+import useAuth from '../Hooks/useAuth';
 
 function ToDoForm(props) {
 
+  const { hasPermission } = useAuth();
   const { onSave } = props;
 
   function handleSubmit(event) {
@@ -19,29 +21,41 @@ function ToDoForm(props) {
 
     onSave(formData);
 
-    event.target.reset();
-    event.target.elements.title.focus();
+    form.reset();
+    title.focus();
   }
+
+  let canCreate = hasPermission('create');
 
   return (
     <>
       <Card className="mt-4">
         <Card.Body>
-          <Card.Title className="mb-4">Add To Do Item</Card.Title>
+          <Card.Title className="mb-4">
+            Add To Do Item
+          </Card.Title>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-4">
-              <Form.Label>To Do Item</Form.Label>
+              <Form.Label>
+                To Do Item
+              </Form.Label>
               <Form.Control as="textarea" rows={2} name="title" placeholder="Details" />
             </Form.Group>
             <Form.Group className="mb-4">
-              <Form.Label>Assigned To</Form.Label>
+              <Form.Label>
+                Assigned To
+              </Form.Label>
               <Form.Control type="text" name="assignedTo" placeholder="Name" />
             </Form.Group>
             <Form.Group className="mb-4">
-              <Form.Label>Difficulty</Form.Label>
+              <Form.Label>
+                Difficulty
+              </Form.Label>
               <Form.Range name="difficulty" min="1" max="10" />
             </Form.Group>
-            <Button type="submit" className="mb-4" variant="secondary" size="sm">Add Item</Button>
+            <Button type="submit" disabled={!canCreate} className="mb-4" variant="secondary">
+              Add Item
+            </Button>
           </Form>
         </Card.Body>
       </Card>

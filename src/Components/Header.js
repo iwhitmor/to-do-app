@@ -1,16 +1,40 @@
 import React from 'react';
-import { Nav, Navbar, Container } from 'react-bootstrap';
+import { Nav, Navbar, Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from './Hooks/useAuth';
+import Login from './Auth/Login'
 
 function Header() {
+
+  const { user, logout } = useAuth();
+
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="primary" variant="dark">
         <Container>
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/about">About</Nav.Link>
-          </Nav>
+          <Nav.Link style={{ color: "white" }} as={Link} to="/">
+            Home
+          </Nav.Link>
+          <Nav.Link style={{ color: "white" }} as={Link} to="/about">
+            About
+          </Nav.Link>
+          <Navbar.Collapse className="justify-content-end">
+            {!user &&
+              <Login />
+            }
+            {user &&
+              <>
+                <Navbar.Text style={{ color: "white" }}>
+                  Welcome back, {user.username}
+                </Navbar.Text>
+                <Navbar.Text>
+                  <Button  onClick={() => logout()} variant="danger">
+                    Log Out
+                  </Button>
+                </Navbar.Text>
+              </>
+            }
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
