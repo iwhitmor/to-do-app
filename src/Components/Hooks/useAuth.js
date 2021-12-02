@@ -14,16 +14,30 @@ export default function useAuth() {
 export function AuthProvider(props) {
   const [user, setUser] = useState(null);
 
-  const auth = useMemo(() => ({
+  const auth = useMemo(() => {
+
+    function hasPermission(permission) {
+      if (!user) return false;
+  
+      if (!permission) return true;
+  
+      if (!user.permissions) return false;
+  
+      return user.permissions.includes(permission);
+    }
+
+    return ({
+
     user,
 
     hasPermission,
     login,
     logout,
-  }), [user]);
+  });
+ }, [user]);
 
   async function login(loginData) {
-    console.log(loginData);
+
     const result = await fetch(`${usersAPI}/Login`, {
       method: 'post',
       headers: {
@@ -45,16 +59,6 @@ export function AuthProvider(props) {
 
   function logout() {
     setUser(null);
-  }
-
-  function hasPermission(permission) {
-    if (!user) return false;
-
-    if (!permission) return true;
-
-    if (!user.permissions) return false;
-
-    return user.permissions.includes(permission);
   }
 
   return (

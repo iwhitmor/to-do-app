@@ -28,7 +28,7 @@ function Header() {
                   Welcome back, {user.username}
                 </Navbar.Text>
                 <Navbar.Text>
-                  <Button onClick={() => logout()} variant="danger">
+                  <Button  onClick={() => logout()} variant="danger">
                     Log Out
                   </Button>
                 </Navbar.Text>
