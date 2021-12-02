@@ -13,7 +13,7 @@ export default function useAuth() {
 export function AuthProvider(props) {
   const [user, setUser] = useState(null);
 
-  const state = {
+  const auth = {
     user,
 
     login,
@@ -30,15 +30,17 @@ export function AuthProvider(props) {
     });
 
     const resultBody = await result.json();
-    console.log(resultBody)
+    //console.log(resultBody)
 
     if (result.ok) {
       setUser(resultBody);
+    } else {
+      console.warn('auth failed', resultBody);
     }
   }
 
   return (
-    <AuthContext.Provider value={state}>
+    <AuthContext.Provider value={auth}>
       {props.children}
     </AuthContext.Provider>
   )
