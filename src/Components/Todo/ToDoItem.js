@@ -13,11 +13,14 @@ function ToDoItem(props) {
   }
 
   function updateTask() {
+    let canUpdate = hasPermission('update');
+    if (!canUpdate) {
+      return;
+    }
     onUpdate(task);
   }
 
   let canDelete = hasPermission('delete');
-  let canUpdate = hasPermission('update');
 
   return (
     <Toast onClose={handleDelete} className="mt-4" style={{ width: '32rem' }}>
