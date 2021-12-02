@@ -26,7 +26,7 @@ export function AuthProvider(props) {
     console.log(loginData);
     const result = await fetch(`${usersAPI}/Login`, {
       method: 'post',
-      headers: {
+      headers: { 
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(loginData),
