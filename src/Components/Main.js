@@ -3,19 +3,22 @@ import ToDoForm from './Todo/ToDoForm';
 import ToDoList from './Todo/ToDoList';
 import { Navbar } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-bootstrap';
-import { useState } from 'react';
+import useFetch from '../Components/Hooks/useFetch';
+import Auth from './Auth';
 import './main.css';
 
-const data = [
-  { title: "Do the dishes, clean kitchen", difficulty: 5, assignedTo: "Ian", completed: true },
-  { title: "Vaccuum and sweep all floors", difficulty: 3, assignedTo: "Sarah", completed: false },
-  { title: "Walk the dogs and pick up poop in yard", difficulty: 10, assignedTo: "Sarah", completed: false },
-  { title: "Wash and dry clothes. Make sure to fold them afterwards", difficulty: 7, assignedTo: "Ian", completed: true },
-];
+// const data = [
+//   { title: "Do the dishes, clean kitchen", difficulty: 5, assignedTo: "Ian", completed: true },
+//   { title: "Vaccuum and sweep all floors", difficulty: 3, assignedTo: "Sarah", completed: false },
+//   { title: "Walk the dogs and pick up poop in yard", difficulty: 10, assignedTo: "Sarah", completed: false },
+//   { title: "Wash and dry clothes. Make sure to fold them afterwards", difficulty: 7, assignedTo: "Ian", completed: true },
+// ];
+
+const toDoApi = 'https://deltav-todo.azurewebsites.net/api/v1/Todos';
 
 function Main() {
 
-  const [tasks, setTasks] = useState(data);
+  const { tasks, setTasks } = useFetch(toDoApi);
 
   function handleSave(formData) {
     const newTask = {
@@ -24,7 +27,7 @@ function Main() {
 
     const newTasks = [
       ...tasks,
-      newTask,
+      newTask,  
     ];
 
     setTasks(newTasks);
@@ -39,16 +42,16 @@ function Main() {
   }
 
   function taskStatus(task) {
-    const updatedTaskStatus = tasks.map(t => {
+    const updatedTaskStatus = tasks.map(todo => {
 
-      if (t === task) {
+      if (todo === task) {
         return {
-          ...t,
-          completed: !t.completed
+          ...todo,
+          completed: !todo.completed
         }
       }
 
-      return t;
+      return todo;
 
     })
 
@@ -68,7 +71,7 @@ function Main() {
             <ToDoForm onSave={handleSave} />
           </Col>
           <Col xs={7}>
-            <ToDoList data={tasks} onDelete={handleDelete} onUpdate={taskStatus} />
+            <ToDoList toDoApi={tasks} onDelete={handleDelete} onUpdate={taskStatus} />
           </Col>
         </Row>
       </Container>
