@@ -20,7 +20,7 @@ function Header() {
               <>
                 <Navbar.Text style={{ color: "white" }}>Welcome back, {user.username}</Navbar.Text>
                 <Navbar.Text>
-                  <Button onClick={() => logout()} variant="dark">Log Out</Button>
+                  <Button onClick={() => logout()} variant="danger">Log Out</Button>
                 </Navbar.Text>
               </>
             }
