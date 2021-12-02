@@ -17,14 +17,17 @@ function ToDoItem(props) {
   }
 
   let canDelete = hasPermission('delete');
+  let canUpdate = hasPermission('update');
 
   return (
     <Toast onClose={handleDelete} className="mt-4" style={{ width: '32rem' }}>
       <Toast.Header closeButton={canDelete}>
         {task.completed ?
-          <Badge className="updateTaskClick1" onClick={updateTask} pill bg="success">Complete
+          <Badge className="updateTaskClick1" onClick={updateTask} pill bg="success">
+            Complete
           </Badge> :
-          <Badge className="updateTaskClick2" onClick={updateTask} pill bg="danger">Pending
+          <Badge className="updateTaskClick2" onClick={updateTask} pill bg="danger">
+            Pending
           </Badge>}
         <span className="d-inline-block ms-2 me-auto">{task.assignedTo}</span>
       </Toast.Header>
