@@ -8,17 +8,10 @@ import Auth from './Auth';
 import './main.css';
 import useAuth from './Hooks/useAuth';
 
-// const data = [
-//   { title: "Do the dishes, clean kitchen", difficulty: 5, assignedTo: "Ian", completed: true },
-//   { title: "Vaccuum and sweep all floors", difficulty: 3, assignedTo: "Sarah", completed: false },
-//   { title: "Walk the dogs and pick up poop in yard", difficulty: 10, assignedTo: "Sarah", completed: false },
-//   { title: "Wash and dry clothes. Make sure to fold them afterwards", difficulty: 7, assignedTo: "Ian", completed: true },
-// ];
-
 const toDoApi = 'https://deltav-todo.azurewebsites.net/api/v1/Todos';
 
 function Main() {
-function setTasks(){}
+  function setTasks() { }
   const { tasks, reload } = useFetch(toDoApi);
   const { user } = useAuth();
 
@@ -31,8 +24,6 @@ function setTasks(){}
       ...tasks,
       newTask,
     ];
-
-   
   }
 
   async function handleDelete(task) {
@@ -48,7 +39,7 @@ function setTasks(){}
     })
 
     setTasks(updatedTaskList)
-  reload();
+    reload();
   }
 
   function taskStatus(task) {
@@ -68,6 +59,8 @@ function setTasks(){}
     setTasks(updatedTaskStatus)
   }
 
+  //Use FILTER to filter tasks on completed or not to update To Do List Manager ( number )
+  //Calculate the number ---> and then show it on the page
 
   return (
     <div className="main">
