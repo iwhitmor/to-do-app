@@ -3,10 +3,15 @@ import { useEffect, useMemo, useState } from "react";
 export default function useFetch(url) {
   // Store fetched data here
   const [loading, setLoading] = useState(true);
+  const [shouldFetch, setShouldFetch] = useState(true);
   const [tasks, setTasks] = useState(null);
 
   useEffect(() => {
+
+    if (!shouldFetch) return;
+
     async function fetchData() {
+
       let response = await fetch(url);
       let body = await response.json();
       // TODO: error handling!
@@ -14,13 +19,13 @@ export default function useFetch(url) {
       setLoading(false);
     };
 
-    setLoading(true);
+    setShouldFetch(false);
     fetchData();
-  }, [url]) // Only re-fetch when url changes
+  }, [url, shouldFetch]) // Only re-fetch when url changes
 
   return useMemo(() => ({
     tasks,
-    setTasks,
     isLoading: loading,
+    reload: () => setShouldFetch(true),
   }), [tasks, loading]);
 }

@@ -18,8 +18,8 @@ import useAuth from './Hooks/useAuth';
 const toDoApi = 'https://deltav-todo.azurewebsites.net/api/v1/Todos';
 
 function Main() {
-
-  const { tasks, setTasks } = useFetch(toDoApi);
+function setTasks(){}
+  const { tasks, reload } = useFetch(toDoApi);
   const { user } = useAuth();
 
   function handleSave(formData) {
@@ -32,7 +32,7 @@ function Main() {
       newTask,
     ];
 
-    setTasks(newTasks);
+   
   }
 
   async function handleDelete(task) {
@@ -48,6 +48,7 @@ function Main() {
     })
 
     setTasks(updatedTaskList)
+  reload();
   }
 
   function taskStatus(task) {
@@ -66,6 +67,7 @@ function Main() {
 
     setTasks(updatedTaskStatus)
   }
+
 
   return (
     <div className="main">
