@@ -4,7 +4,6 @@ import ToDoList from './Todo/ToDoList';
 import { Navbar } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-bootstrap';
 import useFetch from '../Components/Hooks/useFetch';
-import Auth from './Auth';
 import './main.css';
 import useAuth from './Hooks/useAuth';
 
