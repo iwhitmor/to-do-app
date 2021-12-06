@@ -26,6 +26,7 @@ export default function useFetch(url) {
   return useMemo(() => ({
     tasks,
     isLoading: loading,
+    setTasks,
     reload: () => setShouldFetch(true),
   }), [tasks, loading]);
 }
